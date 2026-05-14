@@ -31,6 +31,8 @@ type Submission = {
     financial_docs?: any;
     form_data?: any;
     payment_status?: string;
+    admin_jury_decision?: string;
+    is_withdrawn?: boolean;
 };
 
 function DashboardContent() {
