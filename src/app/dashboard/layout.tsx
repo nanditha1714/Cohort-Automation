@@ -1,7 +1,7 @@
 'use client';
 
 import Sidebar from '@/components/Sidebar';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, Suspense } from 'react';
 
 type SidebarContextType = {
     isOpen: boolean;
@@ -26,7 +26,9 @@ export default function DashboardLayout({
     return (
         <SidebarContext.Provider value={{ isOpen, setIsOpen }}>
             <div className="flex min-h-screen w-full relative">
-                <Sidebar />
+                <Suspense fallback={<div className="w-64 bg-[#2e1065] animate-pulse" />}>
+                    <Sidebar />
+                </Suspense>
                 <div className="flex-1 min-w-0 flex flex-col h-screen overflow-y-auto no-scrollbar">
                     {children}
                 </div>
