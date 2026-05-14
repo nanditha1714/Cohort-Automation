@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabase-client';
 import {
@@ -54,7 +54,7 @@ function CustomSelect({ value, options, onChange, dropUp = false }: { value: str
     );
 }
 
-export default function SettingsPage() {
+function SettingsContent() {
     const router = useRouter();
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const { isOpen, setIsOpen } = useSidebar();
@@ -617,5 +617,17 @@ export default function SettingsPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+export default function SettingsPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full border-4 border-indigo-500 border-t-transparent animate-spin" />
+            </div>
+        }>
+            <SettingsContent />
+        </Suspense>
     );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabase-client';
 import { ArrowLeft, RefreshCw, Download, FileText, Sparkles, CheckCircle, XCircle, X, Save, Users, ChevronDown, Calendar, Clock, Gavel, Video, ExternalLink, AlertTriangle, ShieldCheck, Briefcase, Archive, Layout, CheckCircle2, Box, AlertCircle, CreditCard, Upload, Maximize2, Minimize2, Database, Send } from 'lucide-react';
@@ -39,7 +39,7 @@ const ADDITIONAL_QUESTIONS = [
   { id: 'market_access', label: 'Market Access', description: 'What kind of market access you are looking at?' },
 ];
 
-export default function SubmissionDetail({ params }: { params: Promise<{ id: string }> }) {
+function SubmissionDetailContent({ params }: { params: Promise<{ id: string }> }) {
     const router = useRouter();
     const searchParams = useSearchParams();
     const isInternalReviewPage = searchParams.get('from') === 'internal_review';
@@ -4038,5 +4038,17 @@ export default function SubmissionDetail({ params }: { params: Promise<{ id: str
             )}
         </div>
 
+    );
+}
+
+export default function SubmissionDetail({ params }: { params: Promise<{ id: string }> }) {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full border-4 border-indigo-500 border-t-transparent animate-spin" />
+            </div>
+        }>
+            <SubmissionDetailContent params={params} />
+        </Suspense>
     );
 }
