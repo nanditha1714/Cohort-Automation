@@ -68,7 +68,7 @@ export async function POST(req: Request, props: { params: Promise<{ id: string }
             compression: 'DEFLATE',
         });
 
-        return new NextResponse(buf, {
+        return new NextResponse(new Uint8Array(buf), {
             headers: {
                 'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 'Content-Disposition': `attachment; filename=Withdrawal_Notice_${submission.company_name}.docx`
