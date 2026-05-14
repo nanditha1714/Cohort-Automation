@@ -47,7 +47,7 @@ export default function PublicPaymentPage({ params }: { params: Promise<{ id: st
             console.log("Fetching submission for payment:", id);
             const { data, error: sbError } = await supabase
                 .from('form_submissions')
-                .select('id, company_name, form_data, created_at')
+                .select('id, company_name, form_data, created_at, is_payment_completed')
                 .eq('id', id)
                 .single();
 
