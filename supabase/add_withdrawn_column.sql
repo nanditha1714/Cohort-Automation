@@ -1,0 +1,1 @@
+ALTER TABLE form_submissions ADD COLUMN IF NOT EXISTS is_withdrawn BOOLEAN DEFAULT FALSE;

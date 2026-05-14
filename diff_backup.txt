@@ -1,0 +1,1 @@
+@@ -1765,815'); if (startIdx > -1) {\n<truncated 185 bytes>","Cwd":"\"c:\\\\Users\\\\Dell\\\\Downloads\\\\cohort\"","SafeToAutoRun":"true","WaitMsBeforeAsync":"500","toolAction":"\"Extracting the diff from the logs using the diff header.\"","toolSummary":"\"node extract diff by header\""}}]}
