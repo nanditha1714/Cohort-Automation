@@ -234,8 +234,3 @@ export async function POST(req: Request) {
     }
 }
 
-    } catch (error: any) {
-        console.error('Webhook Error:', error.message);
-        return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-}
